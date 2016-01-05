@@ -1,9 +1,0 @@
-<h3>Comments:</h3>
-<ul>
-  <% goal.goal_comments.each do |comment| %>
-  <li>
-    <%= comment.body %>
-    <p>Written by: <%= comment.author.username %></p>
-  </li>
-  <% end %>
-</ul>

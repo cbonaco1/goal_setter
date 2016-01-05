@@ -4,22 +4,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :goals
-  
-  has_many :user_comments
-
-  has_many(
-    :authored_user_comments,
-    class_name: 'UserComment',
-    foreign_key: :author_id,
-    primary_key: :id
-  )
-
-  has_many(
-    :authored_goal_comments,
-    class_name: 'GoalComment',
-    foreign_key: :author_id,
-    primary_key: :id
-  )
 
   attr_reader :password
   after_initialize :ensure_session_token
