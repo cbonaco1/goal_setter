@@ -1,0 +1,15 @@
+<h3>Write a Comment for <%= goal.title %>:</h3>
+<form action="<%= goal_comments_url %>" method="post">
+  <%= authenticity_token_input %>
+  <input type="hidden" name="goal_comment[goal_id]" value="<%= goal.id %>">
+
+  <textarea
+    name="goal_comment[body]"
+    id="Comment"
+    rows="8"
+    cols="40">
+  </textarea>
+
+  <br>
+  <button>Submit Comment</button>
+</form>
