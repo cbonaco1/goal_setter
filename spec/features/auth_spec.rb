@@ -5,8 +5,8 @@ feature "the signup process" do
   scenario "has a new user page" do
     visit new_user_url
 
-    fill_in("username", with: "fred")
-    fill_in("password", with: "password")
+    fill_in("Username", with: "fred")
+    fill_in("Password", with: "password")
 
     click_button("Create User")
 
