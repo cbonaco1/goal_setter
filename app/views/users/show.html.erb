@@ -24,3 +24,7 @@
 <% if user_page %>
   <%= link_to "New Goal", new_goal_url %>
 <% end %>
+
+
+<%= render 'user_comments/comment', user: @user %>
+<%= render 'user_comments/form', user: @user %>
