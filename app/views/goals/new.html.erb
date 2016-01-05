@@ -1,0 +1,22 @@
+<h2>New Goal</h2>
+
+<form action="<%= goals_url %>" method="post">
+  <%= authenticity_token_input %>
+
+  <label>Title
+    <input type="text" name="goal[title]" value="<%= @goal.title %>">
+  </label>
+
+  <label>Description
+    <textarea name="goal[description]" rows="8" cols="40"><%= @goal.description %></textarea>
+  </label>
+
+  <label>Private?
+    <input type="checkbox" name="goal[private?]"
+    <%= "checked" if @goal.private? %>
+    value="t">
+  </label>
+
+  <button>Add Goal</button>
+
+</form>

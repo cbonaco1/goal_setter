@@ -9,11 +9,16 @@ class SessionsController < ApplicationController
     )
     if @user
       sign_in!(@user)
-      redirect_to goals_url
+      redirect_to user_url(@user)
     else
       flash.now[:errors] = ["Invalid login info"]
       render :new
     end
+  end
+
+  def destroy
+    sign_out!
+    redirect_to new_session_url
   end
 
 

@@ -39,8 +39,18 @@ end
 
 feature "logging out" do
 
-  it "begins with logged out state"
+  scenario "begins with logged out state" do
+    visit new_session_url
 
-  it "doesn't show username on the homepage after logout"
+    expect(page).not_to have_content("Signed in as:")
+  end
+
+  scenario "doesn't show username on the homepage after logout" do
+    sign_in_as_christian
+
+    click_button("Sign Out")
+
+    expect(page).not_to have_content("christian")
+  end
 
 end

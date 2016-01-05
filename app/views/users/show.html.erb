@@ -1,0 +1,17 @@
+<h1>All Goals for <%= @user.username %></h1>
+
+<% user_page = (@user == current_user) %>
+
+<% @user.goals.each do |goal| %>
+  <% if goal.private? %>
+    <% next unless user_page %>
+  <% end %>
+  <%= goal.title %><br>
+  <%= goal.description %><br>
+  Goal completed: <%= goal.complete? %><br>
+<% end %>
+<br><br>
+
+<% if user_page %>
+  <%= link_to "New Goal", new_goal_url %>
+<% end %>
