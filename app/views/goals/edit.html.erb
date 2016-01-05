@@ -1,7 +1,9 @@
-<h2>New Goal</h2>
+<h2>Edit Goal</h2>
 
-<form action="<%= goals_url %>" method="post">
+<form action="<%= goal_url(@goal) %>" method="post">
   <%= authenticity_token_input %>
+
+  <input type="hidden" name="_method" value="patch">
 
   <label>Title
     <input type="text" name="goal[title]" value="<%= @goal.title %>">
@@ -20,7 +22,17 @@
            <%= "checked" if @goal.private? %>
            value="t">
   </label>
-
-  <button>Add Goal</button>
+  <br>
+  <label>Complete?
+    <input type="checkbox"
+           name="goal[complete?]"
+           id="complete_checkbox"
+           <%= "checked" if @goal.complete? %>
+           value="t">
+  </label>
+  
+  <button>Update Goal</button>
 
 </form>
+
+<%= button_to "Delete this goal.", goal_url(@goal), method: :delete %>

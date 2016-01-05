@@ -1,0 +1,17 @@
+<h1><%= @goal.title %></h1>
+
+<p>
+  <%= @goal.description %>
+</p>
+
+<ul>
+  <li><%= @goal.private? ? "Private" : "Public" %></li>
+  <li><%= @goal.complete? ? "Complete! Great job." : "Incomplete" %></li>
+</ul>
+
+<% if current_user == @goal.user %>
+  <%= link_to "Edit Goal", edit_goal_url(@goal) %>
+<% end %>
+
+<br>
+<%= link_to "Back to #{@goal.user.username}", user_url(@goal.user) %>

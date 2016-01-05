@@ -1,16 +1,25 @@
 <h1>All Goals for <%= @user.username %></h1>
 
-<% user_page = (@user == current_user) %>
+<%= user_page = (@user == current_user) %>
 
-<% @user.goals.each do |goal| %>
-  <% if goal.private? %>
-    <% next unless user_page %>
-  <% end %>
-  <%= goal.title %><br>
+<h3>Public Goals</h3>
+<% public_goals = @user.goals.where(private?: false) %>
+<% public_goals.each do |goal| %>
+  <%= link_to "#{goal.title}", goal_url(goal) %><br>
   <%= goal.description %><br>
-  Goal completed: <%= goal.complete? %><br>
+  Goal completed: <%= goal.complete? %><br><br>
 <% end %>
-<br><br>
+
+<% if user_page %>
+  <h3>Private Goals</h3>
+  <% private_goals = @user.goals.where(private?: true) %>
+  <% private_goals.each do |goal| %>
+    <%= link_to "#{goal.title}", goal_url(goal) %><br>
+    <%= goal.description %><br>
+    Goal completed: <%= goal.complete? %><br><br>
+  <% end %>
+  <br><br>
+<% end %>
 
 <% if user_page %>
   <%= link_to "New Goal", new_goal_url %>
