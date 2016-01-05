@@ -10,7 +10,7 @@ feature "the signup process" do
 
   feature "signing up a user" do
 
-    it "shows username on the homepage after signup" do
+    scenario "shows username on the homepage after signup" do
       visit new_user_url
 
       fill_in("Username", with: "fred")
@@ -27,7 +27,13 @@ end
 
 feature "logging in" do
 
-  it "shows username on the homepage after login"
+  scenario "shows username on the homepage after login" do
+
+    sign_in_as_christian
+
+    expect(page).to have_content("christian")
+
+  end
 
 end
 
