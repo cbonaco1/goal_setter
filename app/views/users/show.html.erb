@@ -24,3 +24,6 @@
 <% if user_page %>
   <%= link_to "New Goal", new_goal_url %>
 <% end %>
+
+<%= render 'comments/comment', commentable_object: @user %>
+<%= render 'comments/form', commentable: @user %>

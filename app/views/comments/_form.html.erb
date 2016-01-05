@@ -1,0 +1,14 @@
+<h3>Comment:</h3>
+<form action="<%= comments_url %>" method="post">
+
+  <%= authenticity_token_input %>
+
+  <input type="hidden" name="comment[commentable_type]" value="<%= commentable.class %>">
+
+  <input type="hidden" name="comment[commentable_id]" value="<%= commentable.id %>">
+
+  <textarea id="Comment" name="comment[body]" rows="8" cols="40"></textarea>
+
+  <button>Submit Comment</button>
+
+</form>

@@ -13,5 +13,8 @@
   <%= link_to "Edit Goal", edit_goal_url(@goal) %>
 <% end %>
 
+<%= render 'comments/comment', commentable_object: @goal %>
+<%= render 'comments/form', commentable: @goal %>
+
 <br>
 <%= link_to "Back to #{@goal.user.username}", user_url(@goal.user) %>

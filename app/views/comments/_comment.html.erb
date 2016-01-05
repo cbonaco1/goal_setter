@@ -1,0 +1,7 @@
+<h2>Comments</h2>
+
+<ul>
+  <% commentable_object.comments.each do |comment| %>
+    <li><%= comment.author.username %> posted: <%= comment.body %></li>
+    <% end %>
+</ul>
