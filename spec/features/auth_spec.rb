@@ -5,17 +5,21 @@ feature "the signup process" do
   scenario "has a new user page" do
     visit new_user_url
 
-    fill_in("Username", with: "fred")
-    fill_in("Password", with: "password")
-
-    click_button("Create User")
-
-    expect(page).to have_content("fred")
+    expect(page).to have_button("Create User")
   end
 
   feature "signing up a user" do
 
-    it "shows username on the homepage after signup"
+    it "shows username on the homepage after signup" do
+      visit new_user_url
+
+      fill_in("Username", with: "fred")
+      fill_in("Password", with: "password")
+
+      click_button("Create User")
+
+      expect(page).to have_content("fred")
+    end
 
   end
 
